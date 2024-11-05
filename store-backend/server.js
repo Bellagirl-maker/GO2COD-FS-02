@@ -23,3 +23,16 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
+
+// Route to fetch all products
+app.get("/products", async (req, res) => {
+    try {
+      const products = await Product.find();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching products" });
+    }
+  });
+  
+  // Additional routes for cart management can be added here if needed
+  
