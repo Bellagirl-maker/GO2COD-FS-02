@@ -32,5 +32,5 @@ app.get("/products", async (req, res) => {
     }
   });
   
-  // Additional routes for cart management can be added here if needed
+  
   
