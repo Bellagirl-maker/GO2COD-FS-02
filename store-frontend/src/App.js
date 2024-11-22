@@ -1,13 +1,14 @@
 import React from "react";
+import CartProvider from "./context/CartContext";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 
 function App() {
   return (
-    <div className="App">
+    <CartProvider>
       <ProductList />
       <Cart />
-    </div>
+    </CartProvider>
   );
 }
 
