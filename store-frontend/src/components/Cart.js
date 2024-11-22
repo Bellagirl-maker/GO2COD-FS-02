@@ -1,22 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(savedCart);
-  }, []);
-
-  const getTotalPrice = () => {
-    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  };
-
-  const removeFromCart = (id) => {
-    const updatedCart = cart.filter(item => item._id !== id);
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
+  const { cart, removeFromCart, getTotalPrice } = useContext(CartContext); 
 
   return (
     <div className="bg-gray-100 min-h-screen p-8">
@@ -42,7 +28,6 @@ const Cart = () => {
       )}
     </div>
   );
-  
 };
 
 export default Cart;
